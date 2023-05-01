@@ -1,0 +1,16 @@
+<h1>Detalles del pedido</h1>
+<form #ngFor="ngForm" [formGroup]="formulario" >
+  <label for="idPedido">ID Pedido</label>
+  <input type="number" formControlName="idPedido" required/>
+  <br><br>
+  <label for="idProducto">ID producto</label>
+  <input type="number" formControlName="idProducto" required/>
+  <br><br>
+  <label for="cantidad">Cantidad</label>
+  <input type="number" formControlName="cantidad" required />
+  <br>
+  <br>
+  <button type="button" (click)="agregarProductos()"> Agregar producto</button>
+  <!-- <button type="submit" >Finalizar pedido</button> -->
+</form>
+

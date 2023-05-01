@@ -1,0 +1,55 @@
+<h1>Generar Pedidos</h1>
+<form #ngFor="ngForm" [formGroup]="formulario" >
+  <label for="idCliente">ID Cliente</label>
+  <input type="number" formControlName="idCliente" required/>
+  <br><br>
+  <label for="formaDePago">Forma de pago</label>
+  <input type="text" formControlName="formaDePago" required />
+  <br><br>
+  <label for="direccion">Dirección</label>
+  <input type="text" formControlName="direccion" required/>
+  <br>
+  <button type="button" [disabled]="!formCompleto()" [routerLink]="['/agregardetalles',this.formulario.value.idPedido]">Agregar detalles</button>
+  <br>
+  <button type="button" [disabled]="!detalleVacio()"(click)="finalizarPedido()">Finalizar</button>
+  <router-outlet></router-outlet>
+</form>
+<h1 style="color:rgb(0, 0, 0)"> Lista de productos </h1>
+  <table border="1" style="background-color: rgb(182, 195, 195);" >
+    <thead>
+      <tr>
+        <th>ID PEDIDO</th>
+        <th>ID PRODUCTO</th>
+        <th>CANTIDAD</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let datos of miServicio.arrayCarrito">
+      <td>{{datos.idPedido}}</td>
+      <td>{{datos.idProducto}}</td>
+      <td>{{datos.cantidad}}</td>
+    </tr>
+    </tbody>
+    </table>
+
+<h1 style="color:rgb(0, 0, 0)"> Lista de pedidos </h1>
+<table border="1" style="background-color: rgb(182, 195, 195);" >
+  <thead>
+    <tr>
+      <th>ID PEDIDO</th>
+      <th>ID CLIENTE </th>
+      <th>FORMA DE PAGO</th>
+      <th>DIRECCION</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let datos of miServicio.listaPedidos()">
+    <td>{{datos.idPedido}}</td>
+    <td>{{datos.idCliente}}</td>
+    <td>{{datos.formaDePago}}</td>
+    <td>{{datos.direccion}}</td>
+  </tr>
+  </tbody>
+  </table>
+
+
